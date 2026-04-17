@@ -382,9 +382,10 @@ export default function LoadingSequence3D({ onComplete }) {
 
                 <Stars radius={150} depth={50} count={6000} factor={4} saturation={0} fade speed={1} />
                 {/* City night environment map for crucial metallic glass reflections */}
-                <Environment preset="city" />
-
-                <SceneController onComplete={onComplete} setLogoPhase={setLogoPhase} logoPhase={logoPhase} />
+                <React.Suspense fallback={null}>
+                    <Environment preset="city" />
+                    <SceneController onComplete={onComplete} setLogoPhase={setLogoPhase} logoPhase={logoPhase} />
+                </React.Suspense>
             </Canvas>
 
             {/* UI Overlay: Seamless Glow Transition (Pre-rendered for zero lag) */}
